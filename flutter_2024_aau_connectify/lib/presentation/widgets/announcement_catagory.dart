@@ -9,7 +9,8 @@ const announcement_categories = [
   "Events",
   "Notices",
   "Internship",
-  "Career"
+  "Career",
+  "Other"
 ];
 
 class AnnouncementCatagory extends StatefulWidget {

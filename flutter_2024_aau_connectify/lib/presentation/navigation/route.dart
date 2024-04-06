@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20page/announcement_detail_user.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20page/announcement_user.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20page/create_announcement.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/landing_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/login_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/reset_password/reset_password.dart';
@@ -22,6 +23,7 @@ const String profileUser = '/profile_user_page';
 const String resetPasswordRoute = '/reset_password_page';
 const String resetPasswordRoute2 = '/reset_password_page2';
 const String announcementDetailUserRoute = '/announcement_detail_user';
+const String createAnnouncementRoute = '/create_announcement';
 
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
@@ -55,7 +57,10 @@ Route<dynamic> controller(RouteSettings settings) {
     case announcementDetailUserRoute:
       return MaterialPageRoute(
           builder: (context) => const AnnouncementDetailUser());
-
+    
+    case createAnnouncementRoute:
+      return MaterialPageRoute(
+          builder: (context) =>  CreateAnnouncement(title: 'how can we have a time ',summery: 'how can we have a time how can we have a time how can we have a time ',tag: 'Events', ));
     default:
       return MaterialPageRoute(
           builder: (context) => Scaffold(

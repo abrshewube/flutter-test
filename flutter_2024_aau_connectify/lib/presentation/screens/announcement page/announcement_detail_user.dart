@@ -23,84 +23,122 @@ class _AnnouncementDetailUserState extends State<AnnouncementDetailUser> {
         actions: [],
       ),
       body: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: CustomPaddings.medium,
-                  bottom: CustomPaddings.small,
-                  left: CustomPaddings.small),
-              child: Text(
-                'Announcement Title',
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(fontSize: CustomFontSize.h3),
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+                top: CustomPaddings.medium,
+                bottom: CustomPaddings.small,
+                left: CustomPaddings.small),
+            child: Text(
+              'Announcement Title',
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineMedium!
+                  .copyWith(fontSize: CustomFontSize.h3),
+            ),
+          ),
+          const AnnouncementDetailImageCard(),
+          const AnnouncementDescriptionCard(),
+          const Card(
+            child: Padding(
+              padding: EdgeInsets.all(CustomPaddings.medium),
+              child: TextField(
+
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                decoration: InputDecoration(
+                  border: UnderlineInputBorder(),
+                  disabledBorder: UnderlineInputBorder(),
+                  focusedBorder: UnderlineInputBorder(),
+                  enabledBorder: UnderlineInputBorder(),
+                  hintText: 'Add a comment...',
+                  
+                ),
               ),
             ),
-            const AnnouncementDetailImageCard(),
-            const AnnouncementDescriptionCard(),
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(CustomPaddings.medium),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Add a comment...',
-                    border: InputBorder.none,
-                  ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(CustomPaddings.extraLarge),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                alignment: Alignment.center,
+                textStyle: MaterialStatePropertyAll(
+                    Theme.of(context).textTheme.titleLarge),
+                padding: const MaterialStatePropertyAll(
+                  EdgeInsets.symmetric(
+                      horizontal: CustomPaddings.medium,
+                      vertical: CustomPaddings.large),
                 ),
               ),
-              
-              ),
-              Padding(
-                padding: const EdgeInsets.all(CustomPaddings.extraLarge),
-                child: ElevatedButton(
-                onPressed: () {
-                  // Add your logic for posting a comment here
-                },
-                child: const Text('Post Comment'),
+              onPressed: () {
+                // Add your logic for posting a comment here
+              },
+              child: const Text('Post Comment'),
+            ),
+          ),
+          const Column(
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage:
+                      NetworkImage('https://example.com/user_avatar.jpg'),
                 ),
+                title: Text('John Doe'),
+                subtitle: Text('This is a comment from the user.'),
+              ),
+              Divider(),
+            ],
+          ),
+           Column(
+            children: [
+              const ListTile(
+                leading: CircleAvatar(
+                  backgroundImage:
+                      NetworkImage('https://example.com/user_avatar.jpg'),
+                ),
+                title: Text('John Doe'),
+                subtitle: Text('This is a comment from the user.'),
               ),
               
-              const Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
-                    ),
-                    title: Text('John Doe'),
-                    subtitle: Text('This is a comment from the user.'),
+                  //edit button
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Edit'),
                   ),
-                  Divider(),
-                ],
-              ),
-              const Column(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
+                  //delete button
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Theme.of(context).colorScheme.error),
                     ),
-                    title: Text('John Doe'),
-                    subtitle: Text('This is a comment from the user.'),
+                    onPressed: () {},
+                    child: const Text('Delete'),
                   ),
-                  Divider(),
+                  
                 ],
-              ),
-              const Column(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
-                    ),
-                    title: Text('John Doe'),
-                    subtitle: Text('This is a comment from the user.'),
-                  ),
-                  Divider(),
-                ],
-              ),
 
-          ],
-        ),
-      
+              ),
+              const Divider(),
+            ],
+
+          ),
+          const Column(
+            children: [
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage:
+                      NetworkImage('https://example.com/user_avatar.jpg'),
+                ),
+                title: Text('John Doe'),
+                subtitle: Text('This is a comment from the user.'),
+              ),
+              Divider(),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
