@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/typography.dart';
+import 'package:flutter_2024_aau_connectify/presentation/widgets/landing_page_main_component.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -10,38 +16,84 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: Expanded(
-            
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/background_image.jpg'),
-              fit: BoxFit.cover,
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          backgroundColor: CustomColors.backgroundColor,
+          body: SafeArea(
+            child: Stack(
+              fit: StackFit.expand,
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      // Main Component
+                      LandingPageMainComponent(),
+                      // Buttons
+                      LandingPageButtons(),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
-          child: Column(
+        ));
+  }
+}
+
+class LandingPageButtons extends StatelessWidget {
+  const LandingPageButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.only(top: 20),
+      child: Column(
+        children: <Widget>[
+          FractionallySizedBox(
+            widthFactor: 0.8,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, loginRoute);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: CustomColors.primaryColor,
+                foregroundColor: CustomColors.backgroundColor,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle: const TextStyle(
+                  fontFamily: FontFamily.primary,
+                  fontSize: CustomFontSize.h4,
+                  fontWeight: FontWeight.bold,
+                  color: CustomColors.backgroundColor,
+                ),
+              ),
+              child: const Text('Login'),
+            ),
+          ),
+          const SizedBox(
+            height: CustomPaddings.small,
+          ),
+          // Registration option
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/login');
-                },
-                child: const Text('Login'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register');
-                },
-                child: const Text('Register'),
-              ),
+              const Text("Don't have an account?"),
+              TextButton(
+                  
+                  onPressed: () => (Navigator.pushNamed(context, signupRoute)),
+                  child: const Text(
+                    "Sign Up",
+                    style: TextStyle(
+                        color: CustomColors.primaryColor,
+                        fontSize: CustomFontSize.h6,
+                        fontWeight: FontWeight.bold),
+                  ))
             ],
-          ),
-        ),
-      )),
+          )
+        ],
+      ),
     );
   }
 }
