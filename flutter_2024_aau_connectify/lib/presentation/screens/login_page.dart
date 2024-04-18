@@ -17,6 +17,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
@@ -28,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.only(top: CustomPaddings.large),
             child: Column(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(bottom: CustomPaddings.small),
                   child: CircleAvatar(
                     backgroundColor: CustomColors.backgroundColor,
@@ -40,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                   "AAU Connectify",
                   style: _textTheme.headlineSmall,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: CustomPaddings.extraUltraLarge,
                 ),
                 Text(
@@ -49,51 +57,73 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(CustomPaddings.large),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            TextField(
+                            const TextField(
                               decoration: InputDecoration(
                                   hintText: "Username",
                                   contentPadding:
-                                      EdgeInsets.all(CustomPaddings.small)),
+                                      EdgeInsets.all(CustomPaddings.medium)),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: CustomPaddings.medium,
                             ),
                             TextField(
+                              obscureText: _obscureText,
                               decoration: InputDecoration(
                                   hintText: "Password",
-                                  suffixIcon: Icon(Icons.visibility),
-                                  contentPadding:
-                                      EdgeInsets.all(CustomPaddings.small)),
+                                  suffixIcon: Padding(
+                                    padding: const EdgeInsets.only(
+                                        right: CustomPaddings.small),
+                                    child: IconButton(
+                                      icon: Icon(
+                                          _obscureText
+                                              ? Icons.visibility_off_outlined
+                                              : Icons.visibility_outlined,
+                                          color: CustomColors.primaryColor),
+                                      onPressed: _togglePasswordVisibility,
+                                    ),
+                                  ),
+                                  contentPadding: const EdgeInsets.all(
+                                      CustomPaddings.medium)),
                             ),
                           ],
                         ),
                       ),
-                      TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Forgot Password?",
-                          style: _textTheme.button!.copyWith(
-                            color: CustomColors.primaryColor,
+                      const SizedBox(
+                        height: CustomPaddings.extraUltraLarge,
+                      ),
+                      Column(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Forgot Password?",
+                              style: _textTheme.button!.copyWith(
+                                color: CustomColors.primaryColor,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize:
-                              Size(ButtonWidths.large, ButtonHeights.large),
-                        ),
-                        onPressed: () {},
-                        child: Text(
-                          "Login",
-                          style: _textTheme.button,
-                        ),
-                      ),
+                          const SizedBox(
+                            height: CustomPaddings.small,
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(
+                                  ButtonWidths.extraLarge, ButtonHeights.large),
+                            ),
+                            onPressed: () {},
+                            child: Text(
+                              "Login",
+                              style: _textTheme.button,
+                            ),
+                          ),
+                        ],
+                      )
                     ],
                   ),
                 )
