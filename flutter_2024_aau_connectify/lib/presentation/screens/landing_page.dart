@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart';
+import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart'
+    as route;
 import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/typography.dart';
@@ -21,21 +22,24 @@ class _LandingPageState extends State<LandingPage> {
         home: Scaffold(
           backgroundColor: CustomColors.backgroundColor,
           body: SafeArea(
-            child: Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      // Main Component
-                      LandingPageMainComponent(),
-                      // Buttons
-                      LandingPageButtons(),
-                    ],
+            child: Padding(
+              padding: EdgeInsets.all(CustomPaddings.small),
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        // Main Component
+                        LandingPageMainComponent(),
+                        // Buttons
+                        LandingPageButtons(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));
@@ -48,14 +52,15 @@ class LandingPageButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: CustomPaddings.medium),
       child: Column(
         children: <Widget>[
           FractionallySizedBox(
             widthFactor: 0.8,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, loginRoute);
+                // Navigator.pop(context);
+                Navigator.pushNamed(context, route.loginRoute);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: CustomColors.primaryColor,
@@ -81,8 +86,8 @@ class LandingPageButtons extends StatelessWidget {
             children: [
               const Text("Don't have an account?"),
               TextButton(
-                  
-                  onPressed: () => (Navigator.pushNamed(context, signupRoute)),
+                  onPressed: () =>
+                      (Navigator.pushNamed(context, route.signupRoute)),
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
