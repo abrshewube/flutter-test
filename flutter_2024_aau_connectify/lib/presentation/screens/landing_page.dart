@@ -17,9 +17,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return const Scaffold(
           backgroundColor: CustomColors.backgroundColor,
           body: SafeArea(
             child: Padding(
@@ -42,7 +40,7 @@ class _LandingPageState extends State<LandingPage> {
               ),
             ),
           ),
-        ));
+        );
   }
 }
 
