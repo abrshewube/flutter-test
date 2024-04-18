@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/home_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/landing_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/login_page.dart';
-import 'package:flutter_2024_aau_connectify/presentation/screens/signup_page.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page_2.dart';
 
 const String loginRoute = '/login_page';
 const String homeRoute = '/home_page';
 const String signupRoute = '/signup_page';
+const String signupRoute2 = '/signup_page2';
 const String landingpageRoute = '/landingpage_page';
 
 Route<dynamic> controller(RouteSettings settings) {
@@ -19,6 +21,9 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginPage());
     case signupRoute:
       return MaterialPageRoute(builder: (context) => const SignUp());
+    case signupRoute2:
+      return MaterialPageRoute(builder: (context) =>  SignUp2());
+
     default:
       return MaterialPageRoute(
           builder: (context) => Scaffold(
