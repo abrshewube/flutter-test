@@ -5,18 +5,20 @@ import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/radiuses.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/typography.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class LandingPageMainComponent extends StatelessWidget {
   const LandingPageMainComponent({super.key});
 
   @override
   Widget build(BuildContext context) {
+    TextTheme _textTheme = Theme.of(context).textTheme;
     return Container(
       padding: const EdgeInsets.only(top: CustomPaddings.small),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Padding(
+        children: [
+          const Padding(
             padding: EdgeInsets.only(bottom: CustomPaddings.large),
             child: CircleAvatar(
               backgroundColor: CustomColors.backgroundColor,
@@ -24,10 +26,10 @@ class LandingPageMainComponent extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/aau_logo.png'),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: CustomPaddings.large,
           ),
-          Text(
+          const Text(
             textAlign: TextAlign.center,
             'Welcome to AAU Connectify',
             style: TextStyle(
@@ -36,20 +38,25 @@ class LandingPageMainComponent extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 color: CustomColors.secondaryTextColor),
           ),
-          SizedBox(
+          const SizedBox(
             height: CustomPaddings.medium,
           ),
-          Text(
-            textAlign: TextAlign.center,
-            "Connect with Addis Ababa University's community. Explore opportunities through tailored announcements. Stay informed and empowered.",
-            style: TextStyle(
-                fontFamily: FontFamily.primary,
-                fontSize: CustomFontSize.h7,
-                fontWeight: FontWeight.w300,
-                color: CustomColors.secondaryTextColor),
+          Container(
+            padding:
+                const EdgeInsets.symmetric(horizontal: CustomPaddings.medium),
+            alignment: Alignment.center,
+            child: AnimatedTextKit(animatedTexts: [
+              TyperAnimatedText(
+                textAlign: TextAlign.center,
+                "Connect with Addis Ababa University's community. Explore opportunities through tailored announcements. Stay informed and empowered.",
+                textStyle: _textTheme.bodyMedium!.copyWith(),
+              ),
+            ]),
           ),
         ],
       ),
     );
   }
 }
+
+class TypewriterAnimatedTextKit {}
