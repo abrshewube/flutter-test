@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_2024_aau_connectify/presentation/screens/landing_page.dart';
+import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart'
+    as route;
 
 void main(List<String> args) {
   runApp(const AAUConnectifyApp());
-
 }
 
 class AAUConnectifyApp extends StatelessWidget {
@@ -11,6 +11,10 @@ class AAUConnectifyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LandingPage();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: route.controller,
+      initialRoute: route.landingpageRoute,
+    );
   }
 }
