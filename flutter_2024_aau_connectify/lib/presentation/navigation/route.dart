@@ -3,6 +3,7 @@ import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20
 import 'package:flutter_2024_aau_connectify/presentation/screens/home_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/landing_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/login_page.dart';
+
 import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page_2.dart';
 

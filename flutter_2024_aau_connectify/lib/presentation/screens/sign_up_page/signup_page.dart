@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/radiuses.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/typography.dart';
 import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart'
     as route;
@@ -29,29 +30,28 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
         body: Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            height: 200,
-            child: Column(
-              children: [
-                const Image(
-                  image: AssetImage('assets/images/aau_logo.png'),
-                  width: 150,
-                  height: 120,
-                ),
-                Text('AAU Connectify',
-                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          color: CustomColors.primaryTextColor,
-                        ))
-              ],
+          const Padding(
+            padding: EdgeInsets.only(bottom: CustomPaddings.small),
+            child: CircleAvatar(
+              backgroundColor: CustomColors.backgroundColor,
+              radius: CustomRadius.ultimateLarge,
+              backgroundImage: AssetImage('assets/images/aau_logo.png'),
             ),
           ),
+          Text(
+            "AAU Connectify",
+            style: customtext.headlineSmall,
+          ),
+          const SizedBox(
+            height: CustomPaddings.extraLarge,
+          ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 5),
+            margin: const EdgeInsets.symmetric(vertical: CustomPaddings.small),
             child: Text(
-              'Sign Up',
-              style: customtext.headlineMedium,
+              "Sign Up",
+              style: customtext.titleLarge,
             ),
           ),
           Expanded(
@@ -61,32 +61,46 @@ class _SignUpState extends State<SignUp> {
               child: ListView(
                 children: [
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: CustomPaddings.small),
                     child: TextField(
-                      decoration: const InputDecoration(label: Text('Name')),
+                      decoration: const InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: CustomPaddings.medium),
+                          label: Text('Name')),
                       controller: _nameController,
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: CustomPaddings.small),
                     child: TextField(
-                      decoration: const InputDecoration(label: Text('ID')),
+                      decoration: const InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: CustomPaddings.medium),
+                          label: Text('ID')),
                       controller: _idController,
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: CustomPaddings.small),
                     child: TextField(
                       decoration: const InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: CustomPaddings.medium),
                           label: Text('Student Password')),
                       controller: _studentPasswordController,
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: CustomPaddings.small),
                     child: TextField(
-                      decoration:
-                          const InputDecoration(label: Text('User Name')),
+                      decoration: const InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: CustomPaddings.medium),
+                          label: Text('User Name')),
                       controller: _usernameController,
                     ),
                   )
@@ -96,36 +110,51 @@ class _SignUpState extends State<SignUp> {
           ),
           Column(
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, route.signupRoute2);
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Create Account',
-                    style: TextStyle(fontSize: CustomFontSize.h4),
+              FractionallySizedBox(
+                widthFactor: 0.8,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Navigator.pop(context);
+                    Navigator.pushNamed(context, route.signupRoute2);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: CustomColors.primaryColor,
+                    foregroundColor: CustomColors.backgroundColor,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    textStyle: const TextStyle(
+                      fontFamily: FontFamily.primary,
+                      fontSize: CustomFontSize.h4,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColors.backgroundColor,
+                    ),
                   ),
+                  child: const Text('Create Account'),
                 ),
               ),
               const SizedBox(
-                height: 15,
+                height: CustomPaddings.small,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(" have an account already?"),
-                  TextButton(
-                      onPressed: () => (Navigator.pushNamed(
-                          context, route.landingpageRoute)),
-                      child: const Text(
-                        "Log In",
-                        style: TextStyle(
-                            color: CustomColors.primaryColor,
-                            fontSize: CustomFontSize.h6,
-                            fontWeight: FontWeight.bold),
-                      ))
-                ],
+              // Registration option
+              Padding(
+                padding:
+                    const EdgeInsets.only(bottom: CustomPaddings.ultraLarge),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Already have an account?"),
+                    TextButton(
+                        onPressed: () =>
+                            (Navigator.pushNamed(context, route.loginRoute)),
+                        child: const Text(
+                          "Login",
+                          style: TextStyle(
+                              color: CustomColors.primaryColor,
+                              fontSize: CustomFontSize.h6,
+                              fontWeight: FontWeight.bold),
+                        ))
+                  ],
+                ),
               )
             ],
           )
