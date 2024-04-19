@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20page/announcement_user.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/home_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/landing_page.dart';
 import 'package:flutter_2024_aau_connectify/presentation/screens/login_page.dart';
@@ -6,6 +7,8 @@ import 'package:flutter_2024_aau_connectify/presentation/screens/reset_password/
 import 'package:flutter_2024_aau_connectify/presentation/screens/reset_password/reset_password_2.dart';
 
 import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/sign_up_page/signup_page_2.dart';
 
 
 const String loginRoute = '/login_page';
@@ -17,6 +20,7 @@ const String announcementUser = '/Announcement_user_page';
 const String resetPasswordRoute = '/reset_password_page';
 const String resetPasswordRoute2 = '/reset_password_page2';
 
+
 Route<dynamic> controller(RouteSettings settings) {
   switch (settings.name) {
     case landingpageRoute:
@@ -27,6 +31,10 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LoginPage());
     case signupRoute:
       return MaterialPageRoute(builder: (context) => const SignUp());
+    case signupRoute2:
+      return MaterialPageRoute(builder: (context) =>  SignUp2());
+    case announcementUser:
+      return MaterialPageRoute(builder: (context) =>  const AnnouncementUserPage());
 
     case resetPasswordRoute:
       return MaterialPageRoute(builder: (context) => const ResetPasswordPage());
