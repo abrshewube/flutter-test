@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/announcement%20page/announcement_user.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
+import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart'
+    as route;
 
 class SignUp2 extends StatelessWidget {
   SignUp2({super.key});
@@ -36,14 +39,15 @@ class SignUp2 extends StatelessWidget {
                           .copyWith(fontWeight: FontWeight.w600))),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: CustomPaddings.medium),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: CustomPaddings.medium),
                   child: ListView(
                     children: [
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 5),
                         child: TextField(
-                          decoration:
-                              const InputDecoration(label: Text('New password')),
+                          decoration: const InputDecoration(
+                              label: Text('New password')),
                           controller: _newpassController,
                         ),
                       ),
@@ -84,10 +88,16 @@ class SignUp2 extends StatelessWidget {
                 ),
               ),
               Container(
-                padding:const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 margin: const EdgeInsets.symmetric(vertical: 20),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AnnouncementUserPage()),
+                        (Route<dynamic> route) => false);
+                  },
                   style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                       minimumSize: const MaterialStatePropertyAll(
                           Size(double.infinity, 50))),
