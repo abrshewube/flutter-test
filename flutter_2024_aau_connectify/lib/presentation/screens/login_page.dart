@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/heights.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
@@ -100,7 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                       Column(
                         children: [
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, resetPasswordRoute);
+                            },
                             child: Text(
                               "Forgot Password?",
                               style: _textTheme.button!.copyWith(
