@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/painting.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
+import 'package:json_theme/json_theme_schemas.dart';
 
 const announcement_categories = [
   "Academic",
@@ -36,6 +38,14 @@ class _AnnouncementCatagoryState extends State<AnnouncementCatagory> {
                 //TODO add the code to handle fielter
               },
               style: ButtonStyle(
+                textStyle: MaterialStatePropertyAll(index == _selectedCatagory
+                    ? Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(color: CustomColors.primaryColor)
+                    : Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.w300,
+                        color: CustomColors.secondaryTextColor)),
                 shape: const MaterialStatePropertyAll(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
@@ -43,7 +53,7 @@ class _AnnouncementCatagoryState extends State<AnnouncementCatagory> {
                 ),
                 backgroundColor: MaterialStatePropertyAll(
                     index == _selectedCatagory
-                        ? Theme.of(context).primaryColorLight
+                        ? CustomColors.primaryColor
                         : Theme.of(context).colorScheme.background),
                 elevation: MaterialStatePropertyAll(
                     index == _selectedCatagory ? 23 : 1),
