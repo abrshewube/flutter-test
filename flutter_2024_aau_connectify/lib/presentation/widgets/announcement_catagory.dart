@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
+
 
 const announcement_categories = [
   "Academic",
@@ -19,7 +18,7 @@ class AnnouncementCatagory extends StatefulWidget {
 }
 
 class _AnnouncementCatagoryState extends State<AnnouncementCatagory> {
-  
+  int _selectedCatagory = 0;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -30,9 +29,29 @@ class _AnnouncementCatagoryState extends State<AnnouncementCatagory> {
           itemCount: announcement_categories.length,
           itemBuilder: (context, index) {
             return TextButton(
-              onPressed: () {},
-              style: const ButtonStyle(shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.zero))),
-              child: Text(announcement_categories[index]));
+              onPressed: () {
+                setState(() {
+                  _selectedCatagory = index;
+                });
+                //TODO add the code to handle fielter
+              },
+              style: ButtonStyle(
+                shape: const MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                  ),
+                ),
+                backgroundColor: MaterialStatePropertyAll(
+                    index == _selectedCatagory
+                        ? Theme.of(context).primaryColorLight
+                        : Theme.of(context).colorScheme.background),
+                elevation: MaterialStatePropertyAll(
+                    index == _selectedCatagory ? 23 : 1),
+              ),
+              child: Text(
+                announcement_categories[index],
+              ),
+            );
           }),
     );
   }
