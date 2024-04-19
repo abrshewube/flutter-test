@@ -5,3 +5,9 @@ class ButtonWidths {
   static const double extraLarge = 250;
   static const double ultraLarge = 303;
 }
+
+class CustomImageWidths {
+  static const double imagesSmall = 200;
+  static const double imagesMedium = 300;
+  static const double imagesLarge = 400;
+}
