@@ -3,10 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_2024_aau_connectify/presentation/navigation/route.dart';
+import 'package:flutter_2024_aau_connectify/presentation/screens/user_Home.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/colors.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/heights.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/paddings.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/radiuses.dart';
+import 'package:flutter_2024_aau_connectify/presentation/style/typography.dart';
 import 'package:flutter_2024_aau_connectify/presentation/style/widths.dart';
 import 'package:json_theme/json_theme.dart';
 
@@ -119,12 +121,37 @@ class _LoginPageState extends State<LoginPage> {
                               minimumSize: const Size(
                                   ButtonWidths.extraLarge, ButtonHeights.large),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Home()),
+                                  (Route<dynamic> route) => false);
+                            },
                             child: Text(
                               "Login",
                               style: _textTheme.button,
                             ),
                           ),
+                          SizedBox(
+                            height: CustomPaddings.small,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text("Don't have an account?"),
+                              TextButton(
+                                  onPressed: () => (Navigator.pushNamed(
+                                      context, signupRoute)),
+                                  child: const Text(
+                                    "Sign Up",
+                                    style: TextStyle(
+                                        color: CustomColors.primaryColor,
+                                        fontSize: CustomFontSize.h6,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                            ],
+                          )
                         ],
                       )
                     ],

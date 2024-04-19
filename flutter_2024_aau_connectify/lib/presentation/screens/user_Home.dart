@@ -27,18 +27,20 @@ class HomeState extends State<Home> {
     setState(() {
       _selectedIndex = index;
     });
-    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+
+        appBar: 
+        AppBar(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           title: Text(
             'AAU Connectify',
             style: Theme.of(context)
                 .textTheme
-                .headlineMedium!
+                .headlineSmall!
                 .copyWith(color: CustomColors.secondaryTextColor),
           ),
           centerTitle: true,
@@ -55,6 +57,6 @@ class HomeState extends State<Home> {
                 id: '123456',
                 userName: 'johndoe',
                 fieldOfStudy: 'Computer Science',
-                image: 'assets/images/profile.jpg'));
+                image: 'assets/images/background_3.jpeg'));
   }
 }
