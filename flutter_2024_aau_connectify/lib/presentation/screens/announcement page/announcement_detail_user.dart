@@ -19,28 +19,88 @@ class _AnnouncementDetailUserState extends State<AnnouncementDetailUser> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "",
+        title: "post detail",
         actions: [],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(
-                top: CustomPaddings.medium,
-                bottom: CustomPaddings.small,
-                left: CustomPaddings.small),
-            child: Text(
-              'Announcement Title',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(fontSize: CustomFontSize.h3),
+      body: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: CustomPaddings.medium,
+                  bottom: CustomPaddings.small,
+                  left: CustomPaddings.small),
+              child: Text(
+                'Announcement Title',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium!
+                    .copyWith(fontSize: CustomFontSize.h3),
+              ),
             ),
-          ),
-          AnnouncementDetailImageCard(),
-          AnnouncementDescriptionCard()
-        ],
-      ),
+            const AnnouncementDetailImageCard(),
+            const AnnouncementDescriptionCard(),
+            const Card(
+              child: Padding(
+                padding: EdgeInsets.all(CustomPaddings.medium),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Add a comment...',
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              
+              ),
+              Padding(
+                padding: const EdgeInsets.all(CustomPaddings.extraLarge),
+                child: ElevatedButton(
+                onPressed: () {
+                  // Add your logic for posting a comment here
+                },
+                child: const Text('Post Comment'),
+                ),
+              ),
+              
+              const Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
+                    ),
+                    title: Text('John Doe'),
+                    subtitle: Text('This is a comment from the user.'),
+                  ),
+                  Divider(),
+                ],
+              ),
+              const Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
+                    ),
+                    title: Text('John Doe'),
+                    subtitle: Text('This is a comment from the user.'),
+                  ),
+                  Divider(),
+                ],
+              ),
+              const Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage('https://example.com/user_avatar.jpg'),
+                    ),
+                    title: Text('John Doe'),
+                    subtitle: Text('This is a comment from the user.'),
+                  ),
+                  Divider(),
+                ],
+              ),
+
+          ],
+        ),
+      
     );
   }
 }
