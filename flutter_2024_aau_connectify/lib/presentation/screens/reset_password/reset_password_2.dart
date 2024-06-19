@@ -27,98 +27,105 @@ class _ResetPasswordPageState extends State<ResetPasswordPage2> {
   Widget build(BuildContext context) {
     TextTheme _textTheme = Theme.of(context).textTheme;
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(CustomPaddings.large),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Reset Your Password",
-                            style: _textTheme.titleLarge!
-                                .copyWith(fontSize: CustomFontSize.h3),
-                          ),
-                          const SizedBox(
-                            height: CustomPaddings.medium,
-                          ),
-                          TextField(
-                            obscureText: _obscureText,
-                            decoration: InputDecoration(
-                                hintText: "New Password",
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: CustomPaddings.small),
-                                  child: IconButton(
-                                    icon: Icon(
-                                        _obscureText
-                                            ? Icons.visibility_off_outlined
-                                            : Icons.visibility_outlined,
-                                        color: CustomColors.primaryColor),
-                                    onPressed: _togglePasswordVisibility,
-                                  ),
+      ),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(CustomPaddings.large),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Reset Your Password",
+                          style: _textTheme.titleLarge!
+                              .copyWith(fontSize: CustomFontSize.h3),
+                        ),
+                        const SizedBox(
+                          height: CustomPaddings.medium,
+                        ),
+                        TextField(
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            hintText: "New Password",
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.only(
+                                  right: CustomPaddings.small),
+                              child: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
+                                  color: CustomColors.primaryColor,
                                 ),
-                                contentPadding: const EdgeInsets.all(
-                                    CustomPaddings.medium)),
+                                onPressed: _togglePasswordVisibility,
+                              ),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.all(CustomPaddings.medium),
                           ),
-                          const SizedBox(
-                            height: CustomPaddings.medium,
-                          ),
-                          TextField(
-                            obscureText: _obscureText,
-                            decoration: InputDecoration(
-                                hintText: "Confirm Password",
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: CustomPaddings.small),
-                                  child: IconButton(
-                                    icon: Icon(
-                                        _obscureText
-                                            ? Icons.visibility_off_outlined
-                                            : Icons.visibility_outlined,
-                                        color: CustomColors.primaryColor),
-                                    onPressed: _togglePasswordVisibility,
-                                  ),
+                        ),
+                        const SizedBox(
+                          height: CustomPaddings.medium,
+                        ),
+                        TextField(
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            hintText: "Confirm Password",
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.only(
+                                  right: CustomPaddings.small),
+                              child: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility_off_outlined
+                                      : Icons.visibility_outlined,
+                                  color: CustomColors.primaryColor,
                                 ),
-                                contentPadding: const EdgeInsets.all(
-                                    CustomPaddings.medium)),
+                                onPressed: _togglePasswordVisibility,
+                              ),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.all(CustomPaddings.medium),
                           ),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: CustomPaddings.extraUltraLarge,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(
+                          ButtonWidths.extraLarge, ButtonHeights.large),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(
-                      height: CustomPaddings.extraUltraLarge,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(
-                            ButtonWidths.extraLarge, ButtonHeights.large),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        "Reset",
-                        style: _textTheme.button,
-                      ),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-        ));
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
